@@ -49,6 +49,12 @@ public:
     // (Start() must have been called to initiate time interval measurements).
     double ElapsedMilliseconds() const noexcept;
 
+    // Wrapper to Win32 API QueryPerformanceCounter()
+    static long long Counter() noexcept;
+
+    // Calculate elapsed time in milliseconds,
+    // given a start tick and end tick counts.
+    double ElapsedMilliseconds(long long start, long long finish) const noexcept;
 
     //
     // Ban copy
@@ -77,15 +83,8 @@ private:
     // initialization, and the result can be cached.
     //
 
-    // Wrapper to Win32 API QueryPerformanceCounter()
-    static long long Counter() noexcept;
-
     // Wrapper to Win32 API QueryPerformanceFrequency()
     static long long Frequency() noexcept;
-
-    // Calculate elapsed time in milliseconds,
-    // given a start tick and end tick counts.
-    double ElapsedMilliseconds(long long start, long long finish) const noexcept;
 };
 
 

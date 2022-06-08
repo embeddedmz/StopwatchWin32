@@ -21,15 +21,17 @@ int main()
     Stopwatch sw;   
 
     // Record start time
-    sw.Start();
+    //sw.Start();
+    auto startTick = sw.Counter();
     
     // Portion of code to be timed
     ::Sleep(1000);  // Just wait for 1,000 ms (1 second)
     
     // Record end time
-    sw.Stop();
+    auto stopTick = sw.Counter();
 
     // Print timing results
-    cout << "Elapsed time: " << sw.ElapsedMilliseconds() << " ms\n";
+    //cout << "Elapsed time: " << sw.ElapsedMilliseconds() << " ms\n";
+    cout << "Elapsed time: " <<  sw.ElapsedMilliseconds(startTick, stopTick) << " ms\n";
 }
 
